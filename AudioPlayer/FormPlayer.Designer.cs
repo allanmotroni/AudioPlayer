@@ -66,7 +66,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelTempoReproducao = new System.Windows.Forms.ToolStripStatusLabel();
-            this.pictureBoxAdicionarNaLista = new System.Windows.Forms.PictureBox();
+            this.labelListaReproducaoQuantidade = new System.Windows.Forms.Label();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -82,7 +82,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxExcluirListaReproducao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSalvarListaReproducao)).BeginInit();
             this.statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAdicionarNaLista)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -120,7 +119,7 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.pictureBoxAdicionarNaLista);
+            this.splitContainer1.Panel2.Controls.Add(this.labelListaReproducaoQuantidade);
             this.splitContainer1.Panel2.Controls.Add(this.pictureBoxLimparLista);
             this.splitContainer1.Panel2.Controls.Add(this.comboBoxListaReproducao);
             this.splitContainer1.Panel2.Controls.Add(this.pictureBoxExcluirListaReproducao);
@@ -145,7 +144,7 @@
             // 
             this.pictureBoxTelaCheia.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxTelaCheia.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxTelaCheia.Image")));
-            this.pictureBoxTelaCheia.Location = new System.Drawing.Point(616, 59);
+            this.pictureBoxTelaCheia.Location = new System.Drawing.Point(597, 59);
             this.pictureBoxTelaCheia.Name = "pictureBoxTelaCheia";
             this.pictureBoxTelaCheia.Size = new System.Drawing.Size(17, 18);
             this.pictureBoxTelaCheia.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -219,7 +218,7 @@
             0,
             0,
             0});
-            this.numericUpDownLoopFinal.Location = new System.Drawing.Point(629, 28);
+            this.numericUpDownLoopFinal.Location = new System.Drawing.Point(607, 28);
             this.numericUpDownLoopFinal.Maximum = new decimal(new int[] {
             0,
             0,
@@ -254,7 +253,7 @@
             // 
             this.labelDescricaoTempoFinal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelDescricaoTempoFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDescricaoTempoFinal.Location = new System.Drawing.Point(387, 29);
+            this.labelDescricaoTempoFinal.Location = new System.Drawing.Point(365, 29);
             this.labelDescricaoTempoFinal.Name = "labelDescricaoTempoFinal";
             this.labelDescricaoTempoFinal.Size = new System.Drawing.Size(115, 22);
             this.labelDescricaoTempoFinal.TabIndex = 13;
@@ -278,7 +277,7 @@
             // 
             this.labelTempoFinal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelTempoFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTempoFinal.Location = new System.Drawing.Point(508, 29);
+            this.labelTempoFinal.Location = new System.Drawing.Point(486, 29);
             this.labelTempoFinal.Name = "labelTempoFinal";
             this.labelTempoFinal.Size = new System.Drawing.Size(115, 22);
             this.labelTempoFinal.TabIndex = 11;
@@ -429,7 +428,7 @@
             this.pictureBoxLimparLista.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxLimparLista.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxLimparLista.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxLimparLista.Image")));
-            this.pictureBoxLimparLista.Location = new System.Drawing.Point(234, 619);
+            this.pictureBoxLimparLista.Location = new System.Drawing.Point(234, 4);
             this.pictureBoxLimparLista.Name = "pictureBoxLimparLista";
             this.pictureBoxLimparLista.Size = new System.Drawing.Size(17, 18);
             this.pictureBoxLimparLista.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -453,7 +452,7 @@
             this.pictureBoxExcluirListaReproducao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxExcluirListaReproducao.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxExcluirListaReproducao.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxExcluirListaReproducao.Image")));
-            this.pictureBoxExcluirListaReproducao.Location = new System.Drawing.Point(205, 4);
+            this.pictureBoxExcluirListaReproducao.Location = new System.Drawing.Point(206, 4);
             this.pictureBoxExcluirListaReproducao.Name = "pictureBoxExcluirListaReproducao";
             this.pictureBoxExcluirListaReproducao.Size = new System.Drawing.Size(17, 18);
             this.pictureBoxExcluirListaReproducao.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -523,18 +522,16 @@
             this.toolStripStatusLabelTempoReproducao.Name = "toolStripStatusLabelTempoReproducao";
             this.toolStripStatusLabelTempoReproducao.Size = new System.Drawing.Size(0, 17);
             // 
-            // pictureBoxAdicionarNaLista
+            // labelListaReproducaoQuantidade
             // 
-            this.pictureBoxAdicionarNaLista.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxAdicionarNaLista.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxAdicionarNaLista.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxAdicionarNaLista.Image")));
-            this.pictureBoxAdicionarNaLista.Location = new System.Drawing.Point(3, 619);
-            this.pictureBoxAdicionarNaLista.Name = "pictureBoxAdicionarNaLista";
-            this.pictureBoxAdicionarNaLista.Size = new System.Drawing.Size(17, 18);
-            this.pictureBoxAdicionarNaLista.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBoxAdicionarNaLista.TabIndex = 10;
-            this.pictureBoxAdicionarNaLista.TabStop = false;
-            this.pictureBoxAdicionarNaLista.Click += new System.EventHandler(this.PictureBoxAdicionarNaLista_Click);
+            this.labelListaReproducaoQuantidade.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelListaReproducaoQuantidade.AutoSize = true;
+            this.labelListaReproducaoQuantidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelListaReproducaoQuantidade.Location = new System.Drawing.Point(3, 623);
+            this.labelListaReproducaoQuantidade.Name = "labelListaReproducaoQuantidade";
+            this.labelListaReproducaoQuantidade.Size = new System.Drawing.Size(0, 13);
+            this.labelListaReproducaoQuantidade.TabIndex = 11;
+            this.labelListaReproducaoQuantidade.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // FormPlayer
             // 
@@ -555,6 +552,7 @@
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTelaCheia)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxExcluirLooping)).EndInit();
@@ -570,7 +568,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSalvarListaReproducao)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAdicionarNaLista)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -613,7 +610,7 @@
         private System.Windows.Forms.PictureBox pictureBoxLimparLista;
         private System.Windows.Forms.CheckBox checkBoxReproducaoUnica;
         private System.Windows.Forms.ToolStripMenuItem nomeDaMáquinaToolStripMenuItem;
-        private System.Windows.Forms.PictureBox pictureBoxAdicionarNaLista;
+        private System.Windows.Forms.Label labelListaReproducaoQuantidade;
     }
 }
 

@@ -133,7 +133,13 @@ namespace AudioPlayer
             }
         }
 
-        public string NomeMaquina { get { return Environment.MachineName; } }
+        public string NomeMaquina
+        {
+            get
+            {
+                return Environment.MachineName;
+            }
+        }
 
         #endregion PROPRIEDADES
 
@@ -145,7 +151,6 @@ namespace AudioPlayer
         private void FormPrincipal_Load(object sender, EventArgs e)
         {
             CarregarAudioPlayerDados();
-            //MessageBox.Show(this.NomeMaquina);
             CarregarListaListaReproducao();
         }
 
@@ -290,6 +295,15 @@ namespace AudioPlayer
             listBoxLista.DataSource = null;
             listBoxLista.DataSource = arquivosNovo;
             listBoxLista.DisplayMember = "Nome";
+
+            AtualizarListaReproducaoTotal(arquivosNovo.Count);
+            if (arquivosNovo.Count == 0 && (IsPlaying() || IsPaused()))
+                FimReproducao();
+        }
+                
+        private void AtualizarListaReproducaoTotal(int total)
+        {
+            labelListaReproducaoQuantidade.Text = string.Format("Total: {0}", total);
         }
 
         /// <summary>
@@ -519,7 +533,7 @@ namespace AudioPlayer
         private void labelDescricaoTempoFinal_DoubleClick(object sender, EventArgs e)
         {
             if (ValidarIrParaFinalLoop())
-                IrParaInicioLoop(Convert.ToDouble(TempoLoopFinalString));
+                IrParaInicioLoop(Convert.ToDouble(TempoLoopFinalString)-1);
         }
 
         private bool ValidarIrParaInicioLoop()
@@ -767,9 +781,5 @@ namespace AudioPlayer
             MessageBox.Show(Environment.MachineName, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void PictureBoxAdicionarNaLista_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
