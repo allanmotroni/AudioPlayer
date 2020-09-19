@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPlayer));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.checkBoxReproducaoUnica = new System.Windows.Forms.CheckBox();
             this.pictureBoxTelaCheia = new System.Windows.Forms.PictureBox();
             this.comboBoxLoopings = new System.Windows.Forms.ComboBox();
             this.pictureBoxExcluirLooping = new System.Windows.Forms.PictureBox();
@@ -53,6 +54,7 @@
             this.arquivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.abrirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salvarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nomeDaMáquinaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBoxLimparLista = new System.Windows.Forms.PictureBox();
             this.comboBoxListaReproducao = new System.Windows.Forms.ComboBox();
@@ -64,8 +66,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelTempoReproducao = new System.Windows.Forms.ToolStripStatusLabel();
-            this.checkBoxReproducaoUnica = new System.Windows.Forms.CheckBox();
-            this.nomeDaMáquinaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBoxAdicionarNaLista = new System.Windows.Forms.PictureBox();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -81,6 +82,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxExcluirListaReproducao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSalvarListaReproducao)).BeginInit();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAdicionarNaLista)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -118,6 +120,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.pictureBoxAdicionarNaLista);
             this.splitContainer1.Panel2.Controls.Add(this.pictureBoxLimparLista);
             this.splitContainer1.Panel2.Controls.Add(this.comboBoxListaReproducao);
             this.splitContainer1.Panel2.Controls.Add(this.pictureBoxExcluirListaReproducao);
@@ -126,6 +129,17 @@
             this.splitContainer1.Size = new System.Drawing.Size(1030, 645);
             this.splitContainer1.SplitterDistance = 770;
             this.splitContainer1.TabIndex = 2;
+            // 
+            // checkBoxReproducaoUnica
+            // 
+            this.checkBoxReproducaoUnica.AutoSize = true;
+            this.checkBoxReproducaoUnica.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.checkBoxReproducaoUnica.Location = new System.Drawing.Point(476, 60);
+            this.checkBoxReproducaoUnica.Name = "checkBoxReproducaoUnica";
+            this.checkBoxReproducaoUnica.Size = new System.Drawing.Size(112, 17);
+            this.checkBoxReproducaoUnica.TabIndex = 28;
+            this.checkBoxReproducaoUnica.Text = "Reprodução única";
+            this.checkBoxReproducaoUnica.UseVisualStyleBackColor = true;
             // 
             // pictureBoxTelaCheia
             // 
@@ -385,21 +399,28 @@
             // abrirToolStripMenuItem
             // 
             this.abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
-            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.abrirToolStripMenuItem.Text = "&Abrir...";
             this.abrirToolStripMenuItem.Click += new System.EventHandler(this.AbrirToolStripMenuItem_Click);
             // 
             // salvarToolStripMenuItem
             // 
             this.salvarToolStripMenuItem.Name = "salvarToolStripMenuItem";
-            this.salvarToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.salvarToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.salvarToolStripMenuItem.Text = "&Salvar";
             this.salvarToolStripMenuItem.Click += new System.EventHandler(this.SalvarToolStripMenuItem_Click);
+            // 
+            // nomeDaMáquinaToolStripMenuItem
+            // 
+            this.nomeDaMáquinaToolStripMenuItem.Name = "nomeDaMáquinaToolStripMenuItem";
+            this.nomeDaMáquinaToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.nomeDaMáquinaToolStripMenuItem.Text = "Nome da Máquina";
+            this.nomeDaMáquinaToolStripMenuItem.Click += new System.EventHandler(this.nomeDaMáquinaToolStripMenuItem_Click);
             // 
             // sairToolStripMenuItem
             // 
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.sairToolStripMenuItem.Text = "Sair";
             this.sairToolStripMenuItem.Click += new System.EventHandler(this.SairToolStripMenuItem_Click);
             // 
@@ -408,7 +429,7 @@
             this.pictureBoxLimparLista.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxLimparLista.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxLimparLista.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxLimparLista.Image")));
-            this.pictureBoxLimparLista.Location = new System.Drawing.Point(231, 4);
+            this.pictureBoxLimparLista.Location = new System.Drawing.Point(234, 619);
             this.pictureBoxLimparLista.Name = "pictureBoxLimparLista";
             this.pictureBoxLimparLista.Size = new System.Drawing.Size(17, 18);
             this.pictureBoxLimparLista.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -462,10 +483,10 @@
             this.listBoxLista.BackColor = System.Drawing.Color.LightSteelBlue;
             this.listBoxLista.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listBoxLista.FormattingEnabled = true;
-            this.listBoxLista.Location = new System.Drawing.Point(0, 26);
+            this.listBoxLista.Location = new System.Drawing.Point(0, 28);
             this.listBoxLista.Name = "listBoxLista";
             this.listBoxLista.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBoxLista.Size = new System.Drawing.Size(252, 624);
+            this.listBoxLista.Size = new System.Drawing.Size(252, 585);
             this.listBoxLista.TabIndex = 4;
             this.listBoxLista.DoubleClick += new System.EventHandler(this.listBoxLista_DoubleClick);
             this.listBoxLista.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ListBoxLista_KeyDown);
@@ -502,23 +523,18 @@
             this.toolStripStatusLabelTempoReproducao.Name = "toolStripStatusLabelTempoReproducao";
             this.toolStripStatusLabelTempoReproducao.Size = new System.Drawing.Size(0, 17);
             // 
-            // checkBoxReproducaoUnica
+            // pictureBoxAdicionarNaLista
             // 
-            this.checkBoxReproducaoUnica.AutoSize = true;
-            this.checkBoxReproducaoUnica.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.checkBoxReproducaoUnica.Location = new System.Drawing.Point(476, 60);
-            this.checkBoxReproducaoUnica.Name = "checkBoxReproducaoUnica";
-            this.checkBoxReproducaoUnica.Size = new System.Drawing.Size(112, 17);
-            this.checkBoxReproducaoUnica.TabIndex = 28;
-            this.checkBoxReproducaoUnica.Text = "Reprodução única";
-            this.checkBoxReproducaoUnica.UseVisualStyleBackColor = true;
-            // 
-            // nomeDaMáquinaToolStripMenuItem
-            // 
-            this.nomeDaMáquinaToolStripMenuItem.Name = "nomeDaMáquinaToolStripMenuItem";
-            this.nomeDaMáquinaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.nomeDaMáquinaToolStripMenuItem.Text = "Nome da Máquina";
-            this.nomeDaMáquinaToolStripMenuItem.Click += new System.EventHandler(this.nomeDaMáquinaToolStripMenuItem_Click);
+            this.pictureBoxAdicionarNaLista.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxAdicionarNaLista.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxAdicionarNaLista.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxAdicionarNaLista.Image")));
+            this.pictureBoxAdicionarNaLista.Location = new System.Drawing.Point(3, 619);
+            this.pictureBoxAdicionarNaLista.Name = "pictureBoxAdicionarNaLista";
+            this.pictureBoxAdicionarNaLista.Size = new System.Drawing.Size(17, 18);
+            this.pictureBoxAdicionarNaLista.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxAdicionarNaLista.TabIndex = 10;
+            this.pictureBoxAdicionarNaLista.TabStop = false;
+            this.pictureBoxAdicionarNaLista.Click += new System.EventHandler(this.PictureBoxAdicionarNaLista_Click);
             // 
             // FormPlayer
             // 
@@ -554,6 +570,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSalvarListaReproducao)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAdicionarNaLista)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -596,6 +613,7 @@
         private System.Windows.Forms.PictureBox pictureBoxLimparLista;
         private System.Windows.Forms.CheckBox checkBoxReproducaoUnica;
         private System.Windows.Forms.ToolStripMenuItem nomeDaMáquinaToolStripMenuItem;
+        private System.Windows.Forms.PictureBox pictureBoxAdicionarNaLista;
     }
 }
 

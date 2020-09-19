@@ -309,33 +309,36 @@ namespace AudioPlayer
             }
         }
 
+        private OpenFileDialog AbrirArquivos()
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = ObterChaveAppSettings("filtro");
+            openFileDialog.Multiselect = true;
+            openFileDialog.Title = "Escolha dos arquivos de áudio";
+            return openFileDialog;
+        }
+
         private void Abrir()
         {
             try
             {
-                OpenFileDialog openFileDialog = new OpenFileDialog();
-                openFileDialog.Filter = ObterChaveAppSettings("filtro");
-                openFileDialog.Multiselect = true;
-                openFileDialog.Title = "Escolha dos arquivos de áudio";
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                OpenFileDialog openFileDialog = AbrirArquivos();
+                if (openFileDialog.ShowDialog() == DialogResult.OK && openFileDialog.FileNames.Length > 0)
                 {
-                    if (openFileDialog.FileNames.Length > 0)
+                    if (this.audioPlayerDados.ListaReproducao == null)
+                        this.audioPlayerDados.ListaReproducao = new List<Arquivo>();
+
+                    List<string> nomes = openFileDialog.FileNames.ToList<string>();
+                    foreach (string nome in nomes)
                     {
-                        if (this.audioPlayerDados.ListaReproducao == null)
-                            this.audioPlayerDados.ListaReproducao = new List<Arquivo>();
+                        AdicionarArquivo(nome);
+                    }
 
-                        List<string> nomes = openFileDialog.FileNames.ToList<string>();
-                        foreach (string nome in nomes)
-                        {
-                            AdicionarArquivo(nome);
-                        }
+                    PreencherListaReproducao();
 
-                        PreencherListaReproducao();
-
-                        if (string.IsNullOrEmpty(player.status))
-                        {
-                            IndiceAtual = 0;
-                        }
+                    if (string.IsNullOrEmpty(player.status))
+                    {
+                        IndiceAtual = 0;
                     }
                 }
             }
@@ -566,11 +569,12 @@ namespace AudioPlayer
             string nome = comboBoxListaReproducao.Text;
             if (listaArquivos != null && listaArquivos.Count > 0 && !string.IsNullOrEmpty(nome))
             {
-                int indice = this.audioPlayerDados.ListaListaReproducao.FindIndex(p => p.Nome.ToUpper() == nome.ToUpper());
+                int indice = this.audioPlayerDados.ListaListaReproducao.FindIndex(p => p.Nome.ToUpper() == nome.ToUpper() && p.NomeMaquina == this.NomeMaquina);
                 if (indice == -1)
                 {
                     this.audioPlayerDados.ListaListaReproducao.Add(new ListaReproducao()
                     {
+                        NomeMaquina = this.NomeMaquina,
                         Nome = nome,
                         Arquivos = new List<Arquivo>(listaArquivos)
                     }); ;
@@ -760,7 +764,12 @@ namespace AudioPlayer
 
         private void nomeDaMáquinaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(Environment.MachineName,this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(Environment.MachineName, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void PictureBoxAdicionarNaLista_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
