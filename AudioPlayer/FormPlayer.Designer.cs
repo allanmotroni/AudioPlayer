@@ -497,7 +497,7 @@
             // 
             // timerStatus
             // 
-            this.timerStatus.Interval = 500;
+            this.timerStatus.Interval = 50;
             this.timerStatus.Tick += new System.EventHandler(this.timerStatus_Tick);
             // 
             // statusStrip1

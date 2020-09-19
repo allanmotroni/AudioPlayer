@@ -65,6 +65,14 @@ namespace AudioPlayer
             }
         }
 
+        private string PosicaoAtualString
+        {
+            get
+            {
+                return player.Ctlcontrols.currentPositionString;
+            }
+        }
+
         private double Duracao
         {
             get
@@ -167,7 +175,7 @@ namespace AudioPlayer
 
         private void timerStatus_Tick(object sender, EventArgs e)
         {
-            toolStripStatusLabelTempoReproducao.Text = player.Ctlcontrols.currentPositionString;
+            toolStripStatusLabelTempoReproducao.Text = string.Format("{0} - {1}", PosicaoAtualString, PosicaoAtual);
         }
 
         private void CarregarListaListaReproducao()
@@ -300,7 +308,7 @@ namespace AudioPlayer
             if (arquivosNovo.Count == 0 && (IsPlaying() || IsPaused()))
                 FimReproducao();
         }
-                
+
         private void AtualizarListaReproducaoTotal(int total)
         {
             labelListaReproducaoQuantidade.Text = string.Format("Total: {0}", total);
@@ -533,7 +541,7 @@ namespace AudioPlayer
         private void labelDescricaoTempoFinal_DoubleClick(object sender, EventArgs e)
         {
             if (ValidarIrParaFinalLoop())
-                IrParaInicioLoop(Convert.ToDouble(TempoLoopFinalString)-1);
+                IrParaInicioLoop(Convert.ToDouble(TempoLoopFinalString) - 1);
         }
 
         private bool ValidarIrParaInicioLoop()
