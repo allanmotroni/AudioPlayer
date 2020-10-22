@@ -56,6 +56,7 @@
             this.salvarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nomeDaMáquinaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.labelListaReproducaoQuantidade = new System.Windows.Forms.Label();
             this.pictureBoxLimparLista = new System.Windows.Forms.PictureBox();
             this.comboBoxListaReproducao = new System.Windows.Forms.ComboBox();
             this.pictureBoxExcluirListaReproducao = new System.Windows.Forms.PictureBox();
@@ -66,7 +67,8 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelTempoReproducao = new System.Windows.Forms.ToolStripStatusLabel();
-            this.labelListaReproducaoQuantidade = new System.Windows.Forms.Label();
+            this.dadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mergeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -389,6 +391,7 @@
             this.arquivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.abrirToolStripMenuItem,
             this.salvarToolStripMenuItem,
+            this.dadosToolStripMenuItem,
             this.nomeDaMáquinaToolStripMenuItem,
             this.sairToolStripMenuItem});
             this.arquivoToolStripMenuItem.Name = "arquivoToolStripMenuItem";
@@ -398,30 +401,41 @@
             // abrirToolStripMenuItem
             // 
             this.abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
-            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.abrirToolStripMenuItem.Text = "&Abrir...";
             this.abrirToolStripMenuItem.Click += new System.EventHandler(this.AbrirToolStripMenuItem_Click);
             // 
             // salvarToolStripMenuItem
             // 
             this.salvarToolStripMenuItem.Name = "salvarToolStripMenuItem";
-            this.salvarToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.salvarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.salvarToolStripMenuItem.Text = "&Salvar";
             this.salvarToolStripMenuItem.Click += new System.EventHandler(this.SalvarToolStripMenuItem_Click);
             // 
             // nomeDaMáquinaToolStripMenuItem
             // 
             this.nomeDaMáquinaToolStripMenuItem.Name = "nomeDaMáquinaToolStripMenuItem";
-            this.nomeDaMáquinaToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.nomeDaMáquinaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.nomeDaMáquinaToolStripMenuItem.Text = "Nome da Máquina";
             this.nomeDaMáquinaToolStripMenuItem.Click += new System.EventHandler(this.nomeDaMáquinaToolStripMenuItem_Click);
             // 
             // sairToolStripMenuItem
             // 
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.sairToolStripMenuItem.Text = "Sair";
             this.sairToolStripMenuItem.Click += new System.EventHandler(this.SairToolStripMenuItem_Click);
+            // 
+            // labelListaReproducaoQuantidade
+            // 
+            this.labelListaReproducaoQuantidade.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelListaReproducaoQuantidade.AutoSize = true;
+            this.labelListaReproducaoQuantidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelListaReproducaoQuantidade.Location = new System.Drawing.Point(3, 623);
+            this.labelListaReproducaoQuantidade.Name = "labelListaReproducaoQuantidade";
+            this.labelListaReproducaoQuantidade.Size = new System.Drawing.Size(0, 13);
+            this.labelListaReproducaoQuantidade.TabIndex = 11;
+            this.labelListaReproducaoQuantidade.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pictureBoxLimparLista
             // 
@@ -522,16 +536,20 @@
             this.toolStripStatusLabelTempoReproducao.Name = "toolStripStatusLabelTempoReproducao";
             this.toolStripStatusLabelTempoReproducao.Size = new System.Drawing.Size(0, 17);
             // 
-            // labelListaReproducaoQuantidade
+            // dadosToolStripMenuItem
             // 
-            this.labelListaReproducaoQuantidade.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelListaReproducaoQuantidade.AutoSize = true;
-            this.labelListaReproducaoQuantidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelListaReproducaoQuantidade.Location = new System.Drawing.Point(3, 623);
-            this.labelListaReproducaoQuantidade.Name = "labelListaReproducaoQuantidade";
-            this.labelListaReproducaoQuantidade.Size = new System.Drawing.Size(0, 13);
-            this.labelListaReproducaoQuantidade.TabIndex = 11;
-            this.labelListaReproducaoQuantidade.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.dadosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mergeToolStripMenuItem});
+            this.dadosToolStripMenuItem.Name = "dadosToolStripMenuItem";
+            this.dadosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dadosToolStripMenuItem.Text = "Dados";
+            // 
+            // mergeToolStripMenuItem
+            // 
+            this.mergeToolStripMenuItem.Name = "mergeToolStripMenuItem";
+            this.mergeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mergeToolStripMenuItem.Text = "Merge";
+            this.mergeToolStripMenuItem.Click += new System.EventHandler(this.mergeToolStripMenuItem_Click);
             // 
             // FormPlayer
             // 
@@ -611,6 +629,8 @@
         private System.Windows.Forms.CheckBox checkBoxReproducaoUnica;
         private System.Windows.Forms.ToolStripMenuItem nomeDaMáquinaToolStripMenuItem;
         private System.Windows.Forms.Label labelListaReproducaoQuantidade;
+        private System.Windows.Forms.ToolStripMenuItem dadosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mergeToolStripMenuItem;
     }
 }
 

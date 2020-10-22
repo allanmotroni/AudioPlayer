@@ -11,7 +11,6 @@ namespace AudioPlayer
     {
         #region ATRIBUTOS
         private AudioPlayerDados audioPlayerDados;
-        //private Arquivo arquivoSelecionado;
         private int indiceAtual;
 
         #endregion ATRIBUTOS
@@ -789,5 +788,29 @@ namespace AudioPlayer
             MessageBox.Show(Environment.MachineName, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        private void mergeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.Filter = "Arquivo DAT ou JSON|*.dat;*.json";
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string caminhoArquivoJson = openFileDialog.FileName;
+                    
+                    bool retorno = audioPlayerDados.Merge(caminhoArquivoJson);
+
+                    string mensagem = "Merge realizado com sucesso!";
+                    if (!retorno)                    
+                        mensagem = "Erro ao realizar merge";
+                    
+                    MessageBox.Show(mensagem, this.Text, MessageBoxButtons.OK, retorno ? MessageBoxIcon.Information : MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
