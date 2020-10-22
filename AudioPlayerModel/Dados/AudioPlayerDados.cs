@@ -18,7 +18,9 @@ namespace AudioPlayerModel
 
         public Configuracao Configuracao { get; set; }
         public List<ListaReproducao> ListaListaReproducao { get; set; }
-        public List<Arquivo> Loopings { get; set; }        
+        public List<Arquivo> Loopings { get; set; }  
+        
+        public DateTime AtualizadoEm { get; private set; }
 
         [JsonIgnore]
         public List<Arquivo> ListaReproducao { get; set; }
@@ -30,6 +32,7 @@ namespace AudioPlayerModel
         {
             if(jsonDatabase == null) jsonDatabase = new JsonDatabase();
 
+            this.AtualizadoEm = DateTime.Now;
             return jsonDatabase.GravarListaJsonDatabase(this);
         }
 
