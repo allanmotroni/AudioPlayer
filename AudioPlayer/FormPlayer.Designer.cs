@@ -51,11 +51,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.checkBoxReproducaoContinua = new System.Windows.Forms.CheckBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.arquivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.abrirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.salvarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nomeDaMáquinaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.labelListaReproducaoQuantidade = new System.Windows.Forms.Label();
             this.pictureBoxLimparLista = new System.Windows.Forms.PictureBox();
             this.comboBoxListaReproducao = new System.Windows.Forms.ComboBox();
@@ -67,8 +62,6 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelTempoReproducao = new System.Windows.Forms.ToolStripStatusLabel();
-            this.dadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mergeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -79,7 +72,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLoopFinal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLoopInicial)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownVelocidadeReproducao)).BeginInit();
-            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLimparLista)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxExcluirListaReproducao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSalvarListaReproducao)).BeginInit();
@@ -378,53 +370,11 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.arquivoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(768, 24);
             this.menuStrip1.TabIndex = 26;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // arquivoToolStripMenuItem
-            // 
-            this.arquivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.abrirToolStripMenuItem,
-            this.salvarToolStripMenuItem,
-            this.dadosToolStripMenuItem,
-            this.nomeDaMáquinaToolStripMenuItem,
-            this.sairToolStripMenuItem});
-            this.arquivoToolStripMenuItem.Name = "arquivoToolStripMenuItem";
-            this.arquivoToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.arquivoToolStripMenuItem.Text = "Arquivo";
-            // 
-            // abrirToolStripMenuItem
-            // 
-            this.abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
-            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.abrirToolStripMenuItem.Text = "&Abrir...";
-            this.abrirToolStripMenuItem.Click += new System.EventHandler(this.AbrirToolStripMenuItem_Click);
-            // 
-            // salvarToolStripMenuItem
-            // 
-            this.salvarToolStripMenuItem.Name = "salvarToolStripMenuItem";
-            this.salvarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.salvarToolStripMenuItem.Text = "&Salvar";
-            this.salvarToolStripMenuItem.Click += new System.EventHandler(this.SalvarToolStripMenuItem_Click);
-            // 
-            // nomeDaMáquinaToolStripMenuItem
-            // 
-            this.nomeDaMáquinaToolStripMenuItem.Name = "nomeDaMáquinaToolStripMenuItem";
-            this.nomeDaMáquinaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.nomeDaMáquinaToolStripMenuItem.Text = "Nome da Máquina";
-            this.nomeDaMáquinaToolStripMenuItem.Click += new System.EventHandler(this.nomeDaMáquinaToolStripMenuItem_Click);
-            // 
-            // sairToolStripMenuItem
-            // 
-            this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.sairToolStripMenuItem.Text = "Sair";
-            this.sairToolStripMenuItem.Click += new System.EventHandler(this.SairToolStripMenuItem_Click);
             // 
             // labelListaReproducaoQuantidade
             // 
@@ -536,21 +486,6 @@
             this.toolStripStatusLabelTempoReproducao.Name = "toolStripStatusLabelTempoReproducao";
             this.toolStripStatusLabelTempoReproducao.Size = new System.Drawing.Size(0, 17);
             // 
-            // dadosToolStripMenuItem
-            // 
-            this.dadosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mergeToolStripMenuItem});
-            this.dadosToolStripMenuItem.Name = "dadosToolStripMenuItem";
-            this.dadosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.dadosToolStripMenuItem.Text = "Dados";
-            // 
-            // mergeToolStripMenuItem
-            // 
-            this.mergeToolStripMenuItem.Name = "mergeToolStripMenuItem";
-            this.mergeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.mergeToolStripMenuItem.Text = "Merge";
-            this.mergeToolStripMenuItem.Click += new System.EventHandler(this.mergeToolStripMenuItem_Click);
-            // 
             // FormPlayer
             // 
             this.AllowDrop = true;
@@ -579,8 +514,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLoopFinal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLoopInicial)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownVelocidadeReproducao)).EndInit();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLimparLista)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxExcluirListaReproducao)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSalvarListaReproducao)).EndInit();
@@ -620,17 +553,10 @@
         private System.Windows.Forms.PictureBox pictureBoxSalvarLooping;
         private System.Windows.Forms.CheckBox checkBoxLooping;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem arquivoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem abrirToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem salvarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBoxTelaCheia;
         private System.Windows.Forms.PictureBox pictureBoxLimparLista;
         private System.Windows.Forms.CheckBox checkBoxReproducaoUnica;
-        private System.Windows.Forms.ToolStripMenuItem nomeDaMáquinaToolStripMenuItem;
         private System.Windows.Forms.Label labelListaReproducaoQuantidade;
-        private System.Windows.Forms.ToolStripMenuItem dadosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mergeToolStripMenuItem;
     }
 }
 

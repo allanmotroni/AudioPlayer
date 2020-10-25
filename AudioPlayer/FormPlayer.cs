@@ -161,11 +161,68 @@ namespace AudioPlayer
             {
                 CarregarAudioPlayerDados();
                 CarregarListaListaReproducao();
+
+                PopularMenu();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void PopularMenu()
+        {
+            ToolStripMenuItem toolStripMenuItemArquivo = new ToolStripMenuItem("Arquivo");
+            ObterMenuArquivo(toolStripMenuItemArquivo);
+
+            menuStrip1.Items.Add(toolStripMenuItemArquivo);
+        }
+
+        private void ObterMenuArquivo(ToolStripMenuItem toolStripMenuItemArquivo)
+        {
+            ToolStripMenuItem toolStripItemArquivo_Abrir = new ToolStripMenuItem("Abrir...");
+            toolStripItemArquivo_Abrir.Click += AbrirToolStripMenuItem_Click;
+
+            ToolStripMenuItem toolStripItemArquivo_Salvar = new ToolStripMenuItem("Salvar");
+            toolStripItemArquivo_Salvar.Click += SalvarToolStripMenuItem_Click;
+
+            ToolStripMenuItem toolStripItemArquivo_NomeMaquina = new ToolStripMenuItem("Nome da Máquina");
+            toolStripItemArquivo_NomeMaquina.Click += nomeDaMáquinaToolStripMenuItem_Click;
+
+            ToolStripMenuItem toolStripMenuItemArquivo_Dados = new ToolStripMenuItem("Dados");
+            ObterMenuDados(toolStripMenuItemArquivo_Dados);
+
+            ToolStripMenuItem toolStripItemArquivo_ArquivosRecentes = new ToolStripMenuItem("Arquivos Recentes");
+
+            ToolStripMenuItem toolStripItemArquivo_Sair = new ToolStripMenuItem("Sair");
+            toolStripItemArquivo_Sair.Click += SairToolStripMenuItem_Click;
+
+            ToolStripItem[] arquivos = {
+                toolStripItemArquivo_Abrir,
+                toolStripItemArquivo_Salvar,
+                toolStripMenuItemArquivo_Dados,
+                toolStripItemArquivo_NomeMaquina,
+                toolStripItemArquivo_ArquivosRecentes,
+                toolStripItemArquivo_Sair
+            };
+
+            toolStripMenuItemArquivo.DropDownItems.AddRange(arquivos);
+        }
+
+        private void ObterMenuDados(ToolStripMenuItem toolStripMenuDados)
+        {
+            ToolStripMenuItem toolStripMenuItem_Merge = new ToolStripMenuItem("Merge...");
+            toolStripMenuItem_Merge.Click += mergeToolStripMenuItem_Click;
+
+            ToolStripMenuItem toolStripMenuItem_Listar = new ToolStripMenuItem("Listar...");
+            toolStripMenuItem_Listar.Click += listarToolStripMenuItem_Click;
+
+            ToolStripItem[] dados = {
+                toolStripMenuItem_Merge,
+                toolStripMenuItem_Listar
+            };
+
+            toolStripMenuDados.DropDownItems.AddRange(dados);
         }
 
         private void FormPlayer_FormClosing(object sender, FormClosingEventArgs e)
@@ -825,6 +882,18 @@ namespace AudioPlayer
 
                     MessageBox.Show(mensagem, this.Text, MessageBoxButtons.OK, retorno ? MessageBoxIcon.Information : MessageBoxIcon.Error);
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void listarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MessageBox.Show("Abrir tela");
             }
             catch (Exception ex)
             {
