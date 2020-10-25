@@ -55,7 +55,18 @@ namespace AudioPlayerModel
 
         public static AudioPlayerDados Ler()
         {
-            return new JsonDatabase().LerListaJsonDatabase(new AudioPlayerDados());
+            try
+            {
+                AudioPlayerDados audioPlayerDados = new JsonDatabase().LerListaJsonDatabase(new AudioPlayerDados());
+                if (audioPlayerDados == null)
+                    audioPlayerDados = new AudioPlayerDados();
+
+                return audioPlayerDados;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         private void MergeLoopings(AudioPlayerDados audioPlayerDadosMerge)

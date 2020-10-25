@@ -157,8 +157,15 @@ namespace AudioPlayer
 
         private void FormPrincipal_Load(object sender, EventArgs e)
         {
-            CarregarAudioPlayerDados();
-            CarregarListaListaReproducao();
+            try
+            {
+                CarregarAudioPlayerDados();
+                CarregarListaListaReproducao();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void FormPlayer_FormClosing(object sender, FormClosingEventArgs e)
@@ -248,7 +255,14 @@ namespace AudioPlayer
 
         private void CarregarAudioPlayerDados()
         {
-            this.audioPlayerDados = AudioPlayerDados.Ler();
+            try
+            {
+                this.audioPlayerDados = AudioPlayerDados.Ler();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         private bool GravarAudioPlayerDados()
@@ -263,9 +277,9 @@ namespace AudioPlayer
             {
                 this.IndiceAtual = listBoxLista.SelectedIndex;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -365,7 +379,7 @@ namespace AudioPlayer
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -650,24 +664,29 @@ namespace AudioPlayer
         {
             string descricao = comboBoxLoopings.Text;
             string nomeArquivo = ArquivoAtual == null ? string.Empty : ArquivoAtual.Nome;
+            string extensaoArquivo = ArquivoAtual == null ? string.Empty : ArquivoAtual.Extensao;
 
             if (!string.IsNullOrEmpty(descricao) && TempoLoopInicial >= 0 && TempoLoopFinal > 0)
             {
-                Arquivo arquivoLoopings = this.audioPlayerDados.Loopings.Where(p => p.Nome.ToUpper() == nomeArquivo.ToUpper()).FirstOrDefault();
-                bool inclusao = arquivoLoopings == null || arquivoLoopings.Musica.Repeticoes.FindIndex(p => p.Descricao.ToUpper() == descricao.ToUpper()) < 0;
+                Arquivo arquivoLoopings = this.audioPlayerDados.Loopings.Where(p => p.Nome.ToUpper() == nomeArquivo.ToUpper() && p.Extensao.ToUpper() == extensaoArquivo.ToUpper()).FirstOrDefault();
+                int indiceRepeticoes = arquivoLoopings == null ? -1 : arquivoLoopings.Musica.Repeticoes.FindIndex(p => p.Descricao.ToUpper() == descricao.ToUpper());
+                bool inclusao = indiceRepeticoes < 0;
                 if (inclusao)
                 {
                     if (arquivoLoopings == null)
+                    {
+                        this.audioPlayerDados.Loopings.Add(ArquivoAtual);
                         arquivoLoopings = ArquivoAtual;
+                    }
 
-                    arquivoLoopings.Musica.Repeticoes.Add(new Repetir(descricao, TempoLoopInicial, TempoLoopFinal));
-                    this.audioPlayerDados.Loopings.Add(arquivoLoopings);
+                    Repetir repetirNovo = new Repetir(descricao, TempoLoopInicial, TempoLoopFinal);
+                    arquivoLoopings.Musica.Repeticoes.Add(repetirNovo);
                 }
                 else
                 {
                     int indice = arquivoLoopings.Musica.Repeticoes.FindIndex(p => p.Descricao.ToUpper() == descricao.ToUpper());
                     arquivoLoopings.Musica.Repeticoes[indice].Inicio = TempoLoopInicial;
-                    arquivoLoopings.Musica.Repeticoes[indice].Inicio = TempoLoopFinal;
+                    arquivoLoopings.Musica.Repeticoes[indice].Fim = TempoLoopFinal;
                 }
             }
         }
@@ -797,13 +816,13 @@ namespace AudioPlayer
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     string caminhoArquivoJson = openFileDialog.FileName;
-                    
+
                     bool retorno = audioPlayerDados.Merge(caminhoArquivoJson);
 
                     string mensagem = "Merge realizado com sucesso!";
-                    if (!retorno)                    
+                    if (!retorno)
                         mensagem = "Erro ao realizar merge";
-                    
+
                     MessageBox.Show(mensagem, this.Text, MessageBoxButtons.OK, retorno ? MessageBoxIcon.Information : MessageBoxIcon.Error);
                 }
             }

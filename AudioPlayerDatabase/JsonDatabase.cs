@@ -11,7 +11,7 @@ namespace AudioPlayerDatabase
     public class JsonDatabase
     {
         private const string EXTENSAO_DO_ARQUIVO = ".dat";
-        
+
         public T LerListaJsonDatabase<T>(T objeto)
         {
             try
@@ -19,11 +19,6 @@ namespace AudioPlayerDatabase
                 string nomeDaClasse = ObterNomeArquivo<T>();
                 string nomeDoArquivo = string.Concat(nomeDaClasse, EXTENSAO_DO_ARQUIVO);
 
-                //if (ArquivoExiste(nomeDoArquivo))
-                //{
-                //    string conteudoJson = LerArquivo(nomeDoArquivo);
-                //    objeto = Deserializar<T>(conteudoJson);
-                //}
                 objeto = LerArquivoJson<T>(nomeDoArquivo);
 
                 return objeto;
@@ -36,13 +31,12 @@ namespace AudioPlayerDatabase
 
         public T LerArquivoJson<T>(string nomeArquivo)
         {
+            string conteudoJson = string.Empty;
             if (ArquivoExiste(nomeArquivo))
-            {
-                string conteudoJson = LerArquivo(nomeArquivo);
-                return Deserializar<T>(conteudoJson);
-            }
-            else
-                throw new FileNotFoundException("Arquivo não encontrado", nomeArquivo);
+                conteudoJson = LerArquivo(nomeArquivo);
+            //else
+            //    throw new FileNotFoundException("Arquivo não encontrado", nomeArquivo);
+            return Deserializar<T>(conteudoJson);
         }
 
         private static bool ArquivoExiste(string nomeDoArquivo)
