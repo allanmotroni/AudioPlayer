@@ -416,37 +416,6 @@
 		},
 		{
 			"Caminho": "E:\\Allan\\Albuns\\Blink 182 - Nine (2019)",
-			"Nome": "15 - Remember To Forget Me",
-			"Extensao": ".mp3",
-			"Musica": {
-				"Duracao": null,
-				"Repeticoes": [
-					{
-						"Descricao": "final completo",
-						"Inicio": 157.9842699,
-						"Fim": 185.5662533
-					},
-					{
-						"Descricao": "final parte 1",
-						"Inicio": 165.1266254,
-						"Fim": 171.6387302
-					},
-					{
-						"Descricao": "final parte 3",
-						"Inicio": 179.1038778,
-						"Fim": 185.6263368
-					},
-					{
-						"Descricao": "final parte 2",
-						"Inicio": 171.813501,
-						"Fim": 181.2498983
-					}
-				]
-			},
-			"CaminhoCompleto": "E:\\Allan\\Albuns\\Blink 182 - Nine (2019)\\15 - Remember To Forget Me.mp3"
-		},		
-		{
-			"Caminho": "E:\\Allan\\Albuns\\Blink 182 - Nine (2019)",
 			"Nome": "04 - Darkside",
 			"Extensao": ".mp3",
 			"Musica": {
