@@ -456,7 +456,7 @@
             // 
             // timerLooping
             // 
-            this.timerLooping.Interval = 25;
+            this.timerLooping.Interval = 10;
             this.timerLooping.Tick += new System.EventHandler(this.timerLooping_Tick);
             // 
             // timerStatus
