@@ -4,6 +4,8 @@ using System.Linq;
 using System.Windows.Forms;
 using System.IO;
 using AudioPlayerModel;
+using AudioPlayer.Menu;
+using AudioPlayerUtils;
 
 namespace AudioPlayer
 {
@@ -159,6 +161,7 @@ namespace AudioPlayer
         {
             try
             {
+                CarregarPath();
                 CarregarAudioPlayerDados();
                 CarregarListaListaReproducao();
 
@@ -168,6 +171,44 @@ namespace AudioPlayer
             {
                 MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void CarregarPath()
+        {
+            try
+            {
+                string path = GerenciadorArquivo.Ler(ConstantesSistema.PATH);
+                
+                if (Directory.Exists(path))
+                    AlterarCaminhoBaseDados(path);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        private void AlterarCaminhoBaseDados(string caminhoBaseDeDados)
+        {
+            AudioPlayerDados.CaminhoBaseDeDados = caminhoBaseDeDados;
+        }
+
+        private void CarregarAudioPlayerDados()
+        {
+            try
+            {
+                this.audioPlayerDados = AudioPlayerDados.Ler();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        private void CarregarListaListaReproducao()
+        {
+            LimparComboGenerico(comboBoxListaReproducao);
+            PreencherComboListaListaReproducao();
         }
 
         private void PopularMenu()
@@ -217,9 +258,13 @@ namespace AudioPlayer
             ToolStripMenuItem toolStripMenuItem_Listar = new ToolStripMenuItem("Listar...");
             toolStripMenuItem_Listar.Click += listarToolStripMenuItem_Click;
 
+            ToolStripMenuItem toolStripMenuItem_BaseDados = new ToolStripMenuItem("Base de Dados...");
+            toolStripMenuItem_BaseDados.Click += baseDadosToolStripMenuItem_Click;
+
             ToolStripItem[] dados = {
                 toolStripMenuItem_Merge,
-                toolStripMenuItem_Listar
+                toolStripMenuItem_Listar,
+                toolStripMenuItem_BaseDados
             };
 
             toolStripMenuDados.DropDownItems.AddRange(dados);
@@ -239,12 +284,6 @@ namespace AudioPlayer
         private void timerStatus_Tick(object sender, EventArgs e)
         {
             toolStripStatusLabelTempoReproducao.Text = string.Format("{0} - {1}", PosicaoAtualString, PosicaoAtual);
-        }
-
-        private void CarregarListaListaReproducao()
-        {
-            LimparComboGenerico(comboBoxListaReproducao);
-            PreencherComboListaListaReproducao();
         }
 
         private void PreencherComboListaListaReproducao()
@@ -308,18 +347,6 @@ namespace AudioPlayer
         private void LimparComboGenerico(ComboBox comboBox)
         {
             comboBox.DataSource = null;
-        }
-
-        private void CarregarAudioPlayerDados()
-        {
-            try
-            {
-                this.audioPlayerDados = AudioPlayerDados.Ler();
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
         }
 
         private bool GravarAudioPlayerDados()
@@ -894,6 +921,22 @@ namespace AudioPlayer
             try
             {
                 MessageBox.Show("Abrir tela");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void baseDadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FormBaseDeDados frm = new FormBaseDeDados(AudioPlayerDados.CaminhoBaseDeDados);
+                
+                frm.ShowDialog();
+
+                AlterarCaminhoBaseDados(frm.Caminho);
             }
             catch (Exception ex)
             {

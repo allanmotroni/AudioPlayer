@@ -1,25 +1,27 @@
-﻿using Microsoft.SqlServer.Server;
+﻿using AudioPlayerUtils;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace AudioPlayerDatabase
 {
     public class JsonDatabase
     {
         private const string EXTENSAO_DO_ARQUIVO = ".dat";
+        private readonly string caminho;
 
-        public T LerListaJsonDatabase<T>(T objeto)
+        public JsonDatabase(string caminho)
+        {
+            this.caminho = caminho;
+        }
+
+        public T LerListaJsonDatabase<T>()
         {
             try
             {
-                string nomeDaClasse = ObterNomeArquivo<T>();
-                string nomeDoArquivo = string.Concat(nomeDaClasse, EXTENSAO_DO_ARQUIVO);
+                string caminhoCompleto = ObterCaminho<T>();
 
-                objeto = LerArquivoJson<T>(nomeDoArquivo);
+                T objeto = LerArquivoJson<T>(caminhoCompleto);
 
                 return objeto;
             }
@@ -29,11 +31,11 @@ namespace AudioPlayerDatabase
             }
         }
 
-        public T LerArquivoJson<T>(string nomeArquivo)
+        public T LerArquivoJson<T>(string caminho)
         {
             string conteudoJson = string.Empty;
-            if (ArquivoExiste(nomeArquivo))
-                conteudoJson = LerArquivo(nomeArquivo);
+            if (ArquivoExiste(caminho))
+                conteudoJson = LerArquivo(caminho);
             //else
             //    throw new FileNotFoundException("Arquivo não encontrado", nomeArquivo);
             return Deserializar<T>(conteudoJson);
@@ -49,12 +51,11 @@ namespace AudioPlayerDatabase
         {
             try
             {
-                string nomeDaClasse = ObterNomeArquivo<T>();
-                string nomeDoArquivo = string.Concat(nomeDaClasse, EXTENSAO_DO_ARQUIVO);
+                string caminhoCompleto = ObterCaminho<T>();
 
                 string json = Serializar(objeto);
 
-                GravarArquivo(nomeDoArquivo, json);
+                GravarArquivo(caminhoCompleto, json);
 
                 return true;
             }
@@ -62,6 +63,15 @@ namespace AudioPlayerDatabase
             {
                 return false;
             }
+        }
+
+        private string ObterCaminho<T>()
+        {
+            string nomeDaClasse = ObterNomeArquivo<T>();
+            string nomeDoArquivo = string.Concat(nomeDaClasse, EXTENSAO_DO_ARQUIVO);
+            string caminhoCompleto = this.caminho != null ? Path.Combine(this.caminho, nomeDoArquivo) : nomeDoArquivo;
+
+            return caminhoCompleto;
         }
 
         private static string ObterNomeArquivo<T>()
@@ -73,11 +83,8 @@ namespace AudioPlayerDatabase
         {
             try
             {
-                string retorno = string.Empty;
-                using (StreamReader sr = new StreamReader(caminho))
-                {
-                    retorno = sr.ReadToEnd();
-                }
+                string retorno = GerenciadorArquivo.Ler(caminho);
+                
                 return retorno;
             }
             catch (Exception ex)
@@ -90,10 +97,7 @@ namespace AudioPlayerDatabase
         {
             try
             {
-                using (StreamWriter sw = new StreamWriter(caminho))
-                {
-                    sw.WriteLine(informacao);
-                }
+                GerenciadorArquivo.Gravar(caminho, informacao);
             }
             catch (Exception ex)
             {

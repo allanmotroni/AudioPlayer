@@ -3,13 +3,13 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
 
 namespace AudioPlayerModel
 {
     public class AudioPlayerDados
     {
+        public static string CaminhoBaseDeDados { get; set; }
+
         public AudioPlayerDados()
         {
             ListaReproducao = new List<Arquivo>();
@@ -31,7 +31,7 @@ namespace AudioPlayerModel
 
         public bool Gravar()
         {
-            if (jsonDatabase == null) jsonDatabase = new JsonDatabase();
+            if (jsonDatabase == null) jsonDatabase = new JsonDatabase(CaminhoBaseDeDados);
 
             this.AtualizadoEm = DateTime.Now;
             return jsonDatabase.GravarListaJsonDatabase(this);
@@ -39,7 +39,7 @@ namespace AudioPlayerModel
 
         public bool Merge(string caminhoArquivoJson)
         {
-            if (jsonDatabase == null) jsonDatabase = new JsonDatabase();
+            if (jsonDatabase == null) jsonDatabase = new JsonDatabase(CaminhoBaseDeDados);
 
             AudioPlayerDados audioPlayerDadosMerge = jsonDatabase.LerArquivoJson<AudioPlayerDados>(caminhoArquivoJson);
             if (audioPlayerDadosMerge != null)
@@ -57,7 +57,7 @@ namespace AudioPlayerModel
         {
             try
             {
-                AudioPlayerDados audioPlayerDados = new JsonDatabase().LerListaJsonDatabase(new AudioPlayerDados());
+                AudioPlayerDados audioPlayerDados = new JsonDatabase(CaminhoBaseDeDados).LerListaJsonDatabase<AudioPlayerDados>();
                 if (audioPlayerDados == null)
                     audioPlayerDados = new AudioPlayerDados();
 

@@ -107,10 +107,19 @@
     <Compile Include="FormPlayer.Designer.cs">
       <DependentUpon>FormPlayer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Menu\FormBaseDeDados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu\FormBaseDeDados.Designer.cs">
+      <DependentUpon>FormBaseDeDados.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormPlayer.resx">
       <DependentUpon>FormPlayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu\FormBaseDeDados.resx">
+      <DependentUpon>FormBaseDeDados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -170,6 +179,10 @@
     <ProjectReference Include="..\AudioPlayerModel\AudioPlayerModel.csproj">
       <Project>{72335bba-68b8-464b-b754-764f6e0a9d3b}</Project>
       <Name>AudioPlayerModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AudioPlayerUtils\AudioPlayerUtils.csproj">
+      <Project>{28DB25E6-EEF7-4021-9BE4-14F258F4B124}</Project>
+      <Name>AudioPlayerUtils</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
