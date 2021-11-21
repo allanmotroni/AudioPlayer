@@ -180,7 +180,12 @@ namespace AudioPlayer
                 string path = GerenciadorArquivo.Ler(ConstantesSistema.PATH);
                 
                 if (Directory.Exists(path))
+                {
                     AlterarCaminhoBaseDados(path);
+
+                    string titulo = string.Concat("Audio Player (", path, ")");
+                    AlterarTituloFormPlayer(titulo);
+                }
             }
             catch (Exception ex)
             {
@@ -190,7 +195,12 @@ namespace AudioPlayer
 
         private void AlterarCaminhoBaseDados(string caminhoBaseDeDados)
         {
-            AudioPlayerDados.CaminhoBaseDeDados = caminhoBaseDeDados;
+            AudioPlayerDados.CaminhoBaseDeDados = caminhoBaseDeDados;            
+        }
+
+        private void AlterarTituloFormPlayer(string titulo)
+        {
+            this.Text = titulo;
         }
 
         private void CarregarAudioPlayerDados()
@@ -272,7 +282,14 @@ namespace AudioPlayer
 
         private void FormPlayer_FormClosing(object sender, FormClosingEventArgs e)
         {
-            SalvarDados();
+            try
+            {
+                SalvarDados();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void timerLooping_Tick(object sender, EventArgs e)
@@ -935,8 +952,8 @@ namespace AudioPlayer
                 FormBaseDeDados frm = new FormBaseDeDados(AudioPlayerDados.CaminhoBaseDeDados);
                 
                 frm.ShowDialog();
-
-                AlterarCaminhoBaseDados(frm.Caminho);
+                                
+                CarregarPath();
             }
             catch (Exception ex)
             {
