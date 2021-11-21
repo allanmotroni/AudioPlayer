@@ -282,14 +282,14 @@ namespace AudioPlayer
 
         private void FormPlayer_FormClosing(object sender, FormClosingEventArgs e)
         {
-            try
-            {
-                SalvarDados();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //try
+            //{
+            //    SalvarDados();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         private void timerLooping_Tick(object sender, EventArgs e)
