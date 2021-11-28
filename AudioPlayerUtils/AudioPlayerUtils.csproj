@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="ConstantesSistema.cs" />
     <Compile Include="GerenciadorArquivo.cs" />
+    <Compile Include="Interfaces\ICustomJsonConvert.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

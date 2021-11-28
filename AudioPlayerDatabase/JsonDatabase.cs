@@ -1,5 +1,5 @@
 ﻿using AudioPlayerUtils;
-using Newtonsoft.Json;
+using AudioPlayerUtils.Interfaces;
 using System;
 using System.IO;
 
@@ -9,9 +9,13 @@ namespace AudioPlayerDatabase
     {
         private const string EXTENSAO_DO_ARQUIVO = ".dat";
         private readonly string caminho;
+        private readonly ICustomJsonConvert _jsonConvert;
 
-        public JsonDatabase(string caminho)
+        public JsonDatabase(string caminho) 
+            : base()
         {
+            this._jsonConvert = new CustomJsonConvert();
+
             this.caminho = caminho;
         }
 
@@ -36,8 +40,7 @@ namespace AudioPlayerDatabase
             string conteudoJson = string.Empty;
             if (ArquivoExiste(caminho))
                 conteudoJson = LerArquivo(caminho);
-            //else
-            //    throw new FileNotFoundException("Arquivo não encontrado", nomeArquivo);
+            
             return Deserializar<T>(conteudoJson);
         }
 
@@ -105,14 +108,14 @@ namespace AudioPlayerDatabase
             }
         }
 
-        private static T Deserializar<T>(string json)
+        private T Deserializar<T>(string json)
         {
-            return JsonConvert.DeserializeObject<T>(json);
+            return _jsonConvert.Deserializar<T>(json);
         }
 
-        private static string Serializar<T>(T lista)
+        private string Serializar<T>(T lista)
         {
-            return JsonConvert.SerializeObject(lista);
+            return _jsonConvert.Serializar(lista);
         }
     }
 }

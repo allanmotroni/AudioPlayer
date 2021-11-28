@@ -59,6 +59,10 @@
       <Project>{0A745CF5-88D4-484E-BD63-A1C4F7540E9E}</Project>
       <Name>AudioPlayerDatabase</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AudioPlayerUtils\AudioPlayerUtils.csproj">
+      <Project>{28DB25E6-EEF7-4021-9BE4-14F258F4B124}</Project>
+      <Name>AudioPlayerUtils</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
