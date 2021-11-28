@@ -12,6 +12,7 @@ namespace AudioPlayer
     public partial class FormPlayer : Form
     {
         #region ATRIBUTOS
+
         private AudioPlayerDados audioPlayerDados;
         private int indiceAtual;
 
@@ -154,7 +155,7 @@ namespace AudioPlayer
 
         public FormPlayer()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
         private void FormPrincipal_Load(object sender, EventArgs e)
